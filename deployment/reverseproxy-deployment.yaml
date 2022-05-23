@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: reverseproxy
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      run: reverseproxy
+  template:
+    metadata:
+      labels:
+        run: reverseproxy
+    spec:
+      containers:
+      - image: dungnvtb/reverseproxy:v1
+        name: reverseproxy
+        ports:
+          - containerPort: 8080
